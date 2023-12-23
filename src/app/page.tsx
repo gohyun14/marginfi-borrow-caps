@@ -97,7 +97,7 @@ export default async function HomePage() {
             return (
               <div
                 key={bank.mint.toBase58()}
-                className="relative flex h-full w-full flex-col items-center rounded-[8px] border border-zinc-400 bg-zinc-700 p-4 shadow-md"
+                className="relative flex w-full flex-col items-center rounded-[8px] border border-zinc-400 bg-zinc-700 p-4 shadow-md"
               >
                 <p className="absolute left-4 top-4 text-sm font-[300] text-zinc-300">
                   ${priceInfo?.price.toNumber().toFixed(0)}
