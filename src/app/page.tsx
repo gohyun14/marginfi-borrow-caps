@@ -5,6 +5,8 @@ import { BigNumber } from "bignumber.js";
 import Image from "next/image";
 import { type TokenMetadata } from "~/lib/types";
 
+export const dynamic = "force-dynamic";
+
 const bankMintsMap = new Map<string, { symbol: string }>([
   ["EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", { symbol: "USDC" }],
   ["Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", { symbol: "USDT" }],
