@@ -60,7 +60,7 @@ export default async function HomePage() {
                 token.address === bank.mint.toBase58(),
             );
 
-            const priceInfo = marginfiClient.oraclePrices.get(bankEntry[0]);
+            const priceInfo = marginfiClient.oraclePrices.get(bankEntry[0])!;
 
             const borrowLimit = bank.config.borrowLimit;
             const borrowLimitBN = new BigNumber(borrowLimit).multipliedBy(
@@ -75,15 +75,15 @@ export default async function HomePage() {
             const totalBorrowQuantityRemaining = Math.max(
               totalBorrowQuantityRemainingBN
                 .div(Math.pow(10, bank.mintDecimals))
-                .decimalPlaces(0)
+                .decimalPlaces(2)
                 .toNumber(),
               0,
             );
 
             const totalBorrowValueRemaining = Math.max(
               bank
-                .computeUsdValue(priceInfo!, totalBorrowQuantityRemainingBN, 2)
-                .decimalPlaces(0)
+                .computeUsdValue(priceInfo, totalBorrowQuantityRemainingBN, 2)
+                .decimalPlaces(2)
                 .toNumber(),
               0,
             );
@@ -94,18 +94,26 @@ export default async function HomePage() {
               .decimalPlaces(2)
               .toNumber();
 
+            const borrowAPY = bank
+              .computeInterestRates()
+              .borrowingRate.multipliedBy(100)
+              .decimalPlaces(2)
+              .toNumber();
+
             return (
               <div
                 key={bank.mint.toBase58()}
-                className="relative flex w-full flex-col items-center rounded-[8px] border border-zinc-400 bg-zinc-700 p-4 shadow-md"
+                className="flex w-full flex-col items-center rounded-[8px] border border-zinc-400 bg-zinc-700 p-4 shadow-md"
               >
-                <p className="absolute left-4 top-4 text-sm font-[300] text-zinc-300">
-                  ${priceInfo?.price.toNumber().toFixed(0)}
-                </p>
+                <div className="mb-2 flex w-full flex-row items-center justify-between">
+                  <p className="text-left text-sm font-[300] text-zinc-300">
+                    {borrowAPY}% apy
+                  </p>
 
-                <p className="absolute right-4 top-4 text-sm font-[300] text-zinc-300">
-                  {percentBorrowed.toLocaleString()}%
-                </p>
+                  <p className="text-right text-sm font-[300] text-zinc-300">
+                    {percentBorrowed.toLocaleString()}% usage
+                  </p>
+                </div>
 
                 {tokenMetadata && (
                   <Image
@@ -125,6 +133,12 @@ export default async function HomePage() {
                 <p className="text-xl text-zinc-400">
                   ${totalBorrowValueRemaining.toLocaleString()}
                 </p>
+
+                <div className="mt-2 flex w-full flex-row items-center justify-between">
+                  <p className="text-center text-sm font-[300] text-zinc-300">
+                    ${priceInfo?.price.toNumber().toFixed(0)}
+                  </p>
+                </div>
               </div>
             );
           })}
