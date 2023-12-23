@@ -107,7 +107,7 @@ export default async function HomePage() {
               >
                 <div className="mb-2 flex w-full flex-row items-center justify-between">
                   <p className="text-left text-sm font-[300] text-zinc-300">
-                    {borrowAPY}% apy
+                    {borrowAPY}% apr
                   </p>
 
                   <p className="text-right text-sm font-[300] text-zinc-300">
