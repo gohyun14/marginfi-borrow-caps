@@ -37,7 +37,7 @@ export default async function HomePage() {
   const tokenMetadataJson = (await tokenMetadata.json()) as TokenMetadata[];
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center overflow-hidden bg-zinc-900">
+    <main className="flex min-h-screen flex-col items-center justify-center overflow-y-auto overflow-x-hidden bg-zinc-900">
       <h1 className="pt-8 text-center text-4xl text-zinc-100 sm:px-4 sm:pt-0 sm:text-6xl">
         marginfi borrow availability
       </h1>
