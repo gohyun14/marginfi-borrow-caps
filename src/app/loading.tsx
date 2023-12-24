@@ -20,7 +20,7 @@ export default function Loading() {
 
               <div className="mb-2 h-[64px] w-[64px] rounded-full bg-zinc-300" />
 
-              <p className="mb-1 h-[30px] w-[150px] rounded-full bg-zinc-400 text-left text-sm font-[300] text-zinc-300" />
+              <p className="mb-1 h-[30px] w-[220px] rounded-full bg-zinc-400 text-left text-sm font-[300] text-zinc-300" />
 
               <p className="h-[26px] w-[100px] rounded-full bg-zinc-400 text-left text-sm font-[300] text-zinc-300" />
 

@@ -7,11 +7,11 @@ import { type TokenMetadata } from "~/lib/types";
 
 export const dynamic = "force-dynamic";
 
-const bankMintsMap = new Map<string, { symbol: string }>([
-  ["EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", { symbol: "USDC" }],
-  ["Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", { symbol: "USDT" }],
-  ["So11111111111111111111111111111111111111112", { symbol: "SOL" }],
-]);
+const bankMints = [
+  "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
+  "So11111111111111111111111111111111111111112",
+];
 
 const connection = new Connection(
   "https://mrgn.rpcpool.com/c293bade994b3864b52c6bbbba4b",
@@ -43,14 +43,11 @@ export default async function HomePage() {
       </h1>
       <div className="container grid grid-flow-row grid-cols-1 gap-[16px] px-4 py-8 text-zinc-100 sm:grid-cols-3">
         {Array.from(banks)
-          .filter((bankEntry) => bankMintsMap.get(bankEntry[1].mint.toBase58()))
-          .sort(
-            (a, b) =>
-              bankMintsMap
-                .get(a[1].mint.toBase58())!
-                .symbol.localeCompare(
-                  bankMintsMap.get(b[1].mint.toBase58())!.symbol,
-                ) ?? 0,
+          .filter((bankEntry) =>
+            bankMints.includes(bankEntry[1].mint.toBase58()),
+          )
+          .sort((a, b) =>
+            a[1].mint.toBase58().localeCompare(b[1].mint.toBase58()),
           )
           .map((bankEntry) => {
             const bank = bankEntry[1];
@@ -127,7 +124,7 @@ export default async function HomePage() {
 
                 <p className="text-2xl">
                   {totalBorrowQuantityRemaining.toLocaleString()}{" "}
-                  {bankMintsMap.get(bankEntry[1].mint.toBase58())!.symbol}
+                  {tokenMetadata?.name}
                 </p>
 
                 <p className="text-xl text-zinc-400">
