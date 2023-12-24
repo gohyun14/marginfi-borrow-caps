@@ -12,6 +12,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@bonfida/spl-name-service": "^2.1.1",
     "@mrgnlabs/marginfi-client-v2": "^2.1.2",
     "@planetscale/database": "^1.11.0",
     "@solana/web3.js": "^1.87.6",

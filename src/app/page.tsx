@@ -13,12 +13,12 @@ const bankMintsMap = new Map<string, { symbol: string }>([
   ["So11111111111111111111111111111111111111112", { symbol: "SOL" }],
 ]);
 
-export default async function HomePage() {
-  const connection = new Connection(
-    "https://mrgn.rpcpool.com/c293bade994b3864b52c6bbbba4b",
-    "confirmed",
-  );
+const connection = new Connection(
+  "https://mrgn.rpcpool.com/c293bade994b3864b52c6bbbba4b",
+  "confirmed",
+);
 
+export default async function HomePage() {
   // eslint-disable-next-line
   const config = await getConfig("production");
 
