@@ -1,10 +1,8 @@
-import React from "react";
 import { NameRegistryState, getDomainKeySync } from "@bonfida/spl-name-service";
 import { Connection, PublicKey } from "@solana/web3.js";
-import { redirect } from "next/navigation";
 
-import HealthFactor from "~/components/HealthFactor";
 import Link from "next/link";
+import AccountInfo from "~/components/AccountInfo";
 
 const connection = new Connection(
   "https://mrgn.rpcpool.com/c293bade994b3864b52c6bbbba4b",
@@ -47,7 +45,7 @@ export default async function AddressPage({
       ) : (
         <>
           <p>{address}</p>
-          {pk && <HealthFactor pk={pk} />}
+          {pk && <AccountInfo pk={pk} />}
         </>
       )}
     </main>
