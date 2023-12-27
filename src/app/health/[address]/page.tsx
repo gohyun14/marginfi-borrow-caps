@@ -38,7 +38,7 @@ export default async function AddressPage({
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center overflow-y-auto overflow-x-hidden bg-zinc-900 text-zinc-100">
+    <main className="flex min-h-screen flex-col items-center overflow-y-auto overflow-x-hidden bg-zinc-900 text-zinc-100">
       {error ? (
         <>
           <p>Invalid domain name provided</p>

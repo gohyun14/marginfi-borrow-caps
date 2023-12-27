@@ -7,6 +7,7 @@ import {
 } from "@mrgnlabs/marginfi-client-v2";
 import { type TokenMetadata } from "~/lib/types";
 import Image from "next/image";
+import SimulatedHealthFactor from "./SimulatedHealthFactor";
 
 const connection = new Connection(
   "https://mrgn.rpcpool.com/c293bade994b3864b52c6bbbba4b",
@@ -135,79 +136,81 @@ export default async function HealthFactor({ pk }: { pk: PublicKey }) {
                 />
               </div>
 
-              <div className="flex flex-col justify-center gap-8 md:flex-row md:gap-4">
-                <div className="w-full">
-                  <h4 className="mb-4 font-medium md:text-lg">Lending</h4>
-                  <div className="space-y-4">
+              <div className="flex flex-col justify-center">
+                <div className="mb-3 flex w-full flex-col items-center">
+                  <h4 className="mb-2 font-medium md:text-lg">Lending</h4>
+                  {/* container */}
+                  <div className="flex flex-row flex-wrap gap-3">
                     {account.balances.lending.length === 0 && (
                       <p className="text-destructive-foreground">
                         No open lending positions
                       </p>
                     )}
+                    {/* cards */}
                     {account.balances.lending.map((balance, index) => (
-                      <div key={index}>
-                        <div>
-                          <h5 className="mb-4 flex items-center gap-2 py-4">
-                            <Image
-                              src={balance.logo!}
-                              alt={balance.name!}
-                              width={30}
-                              height={30}
-                              unoptimized
-                              className="rounded-full"
-                            />
-                            {balance.name}
-                          </h5>
-                          <ul className="space-y-1 font-mono text-sm">
-                            <li>
-                              {balance.assets.quantity} {balance.symbol}
-                            </li>
-                            <li>
-                              {balance.assets.usd < 0.01
-                                ? `$${balance.assets.usd}`
-                                : usDollarFormatter.format(balance.assets.usd)}
-                            </li>
-                          </ul>
-                        </div>
+                      <div
+                        key={index}
+                        className="flex flex-col items-center gap-2 rounded-md border border-zinc-400 bg-zinc-700 p-2 text-center"
+                      >
+                        <Image
+                          src={balance.logo!}
+                          alt={balance.name!}
+                          width={30}
+                          height={30}
+                          unoptimized
+                          className="rounded-full"
+                        />
+                        <ul className="font-mono text-sm">
+                          <li>
+                            {balance.assets.quantity.toLocaleString()}{" "}
+                            {balance.symbol}
+                          </li>
+                          <li>
+                            {balance.assets.usd < 0.01
+                              ? `$${balance.assets.usd}`
+                              : usDollarFormatter.format(balance.assets.usd)}
+                          </li>
+                        </ul>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div className="w-full">
-                  <h4 className="mb-4 text-lg font-medium">Borrowing</h4>
-                  <div className="space-y-4">
+                <div className="mb-3 flex w-full flex-col items-center">
+                  <h4 className="mb-2 text-lg font-medium">Borrowing</h4>
+                  {/* container */}
+                  <div className="flex flex-row flex-wrap gap-3">
                     {account.balances.borrowing.length === 0 && (
                       <p className="text-destructive-foreground">
                         No open borrowing positions
                       </p>
                     )}
+                    {/* cards */}
                     {account.balances.borrowing.map((balance, index) => (
-                      <div key={index}>
-                        <div>
-                          <h5 className="mb-4 flex items-center gap-2 py-4">
-                            <Image
-                              src={balance.logo!}
-                              alt={balance.name!}
-                              width={30}
-                              height={30}
-                              unoptimized
-                              className="rounded-full"
-                            />
-                            {balance.name}
-                          </h5>
-                          <ul className="space-y-1 font-mono text-sm">
-                            <li>
-                              {balance.liabilities.quantity} {balance.symbol}
-                            </li>
-                            <li>
-                              {balance.liabilities.usd < 0.01
-                                ? `$${balance.liabilities.usd}`
-                                : usDollarFormatter.format(
-                                    balance.liabilities.usd,
-                                  )}
-                            </li>
-                          </ul>
-                        </div>
+                      <div
+                        key={index}
+                        className="flex flex-col items-center gap-2 rounded-md border border-zinc-400 bg-zinc-700 p-2 text-center"
+                      >
+                        <Image
+                          src={balance.logo!}
+                          alt={balance.name!}
+                          width={30}
+                          height={30}
+                          unoptimized
+                          className="rounded-full"
+                        />
+                        <ul className="font-mono text-sm">
+                          <li>
+                            {balance.liabilities.quantity.toLocaleString()}{" "}
+                            {balance.symbol}
+                          </li>
+                          <li>
+                            {balance.liabilities.usd < 0.01
+                              ? `$${balance.liabilities.usd}`
+                              : usDollarFormatter.format(
+                                  balance.liabilities.usd,
+                                )}
+                          </li>
+                        </ul>
                       </div>
                     ))}
                   </div>
@@ -217,6 +220,8 @@ export default async function HealthFactor({ pk }: { pk: PublicKey }) {
           ))}
         </div>
       )}
+
+      <SimulatedHealthFactor />
     </div>
   );
 }
