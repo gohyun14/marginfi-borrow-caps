@@ -1,4 +1,4 @@
-import { type OraclePrice } from "@mrgnlabs/marginfi-client-v2";
+import { type BigNumber } from "bignumber.js";
 
 export type TokenMetadata = {
   symbol: string;
@@ -21,7 +21,6 @@ export type Account = {
       name: string | undefined;
       symbol: string | undefined;
       logo: string | undefined;
-      priceInfo: OraclePrice | undefined
       assets: {
         quantity: number;
         usd: number;

@@ -1,13 +1,6 @@
-import React from "react";
+import { MarginfiClient, getConfig } from "@mrgnlabs/marginfi-client-v2";
 import { Connection, type PublicKey } from "@solana/web3.js";
-import {
-  getConfig,
-  MarginfiClient,
-  MarginRequirementType,
-} from "@mrgnlabs/marginfi-client-v2";
-import { type TokenMetadata } from "~/lib/types";
-import Image from "next/image";
-import { type Account } from "~/lib/types";
+import { type Account, type TokenMetadata } from "~/lib/types";
 import Accounts from "./Accounts";
 
 const connection = new Connection(
@@ -43,6 +36,10 @@ export default async function AccountInfo({ pk }: { pk: PublicKey }) {
             .minus(maintenanceComponentsWithBiasAndWeighted.liabilities)
             .dividedBy(maintenanceComponentsWithBiasAndWeighted.assets)
             .toNumber();
+    const hfTest = assets.isZero()
+      ? 1
+      : assets.minus(liabilities).dividedBy(assets).toNumber();
+    console.log(healthFactor, hfTest);
 
     const balances = account.activeBalances.map((balance) => {
       const bank = marginfiClient.banks.get(balance.bankPk.toBase58())!;
@@ -74,7 +71,6 @@ export default async function AccountInfo({ pk }: { pk: PublicKey }) {
         name: tokenMetadata?.name,
         symbol: tokenMetadata?.symbol,
         logo: tokenMetadata?.logoURI,
-        priceInfo,
         assets: {
           quantity: !assetsUsd.isZero() ? assets.toNumber() : 0,
           usd: assetsUsd.toNumber(),
