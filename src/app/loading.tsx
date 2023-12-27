@@ -18,7 +18,7 @@ export default function Loading() {
                 <p className="h-[20px] w-[70px] rounded-full bg-zinc-400 text-left text-sm font-[300] text-zinc-300" />
               </div>
 
-              <div className="mb-2 h-[64px] w-[64px] rounded-full bg-zinc-300" />
+              <div className="mb-2 h-[64px] w-[64px] rounded-full bg-zinc-400" />
 
               <p className="mb-1 h-[30px] w-[220px] rounded-full bg-zinc-400 text-left text-sm font-[300] text-zinc-300" />
 

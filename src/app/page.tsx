@@ -115,7 +115,7 @@ export default async function HomePage() {
                 {tokenMetadata && (
                   <Image
                     src={tokenMetadata?.logoURI}
-                    alt={tokenMetadata?.name}
+                    alt={tokenMetadata?.symbol}
                     width={64}
                     height={64}
                     className="mb-2 rounded-full"
@@ -124,7 +124,7 @@ export default async function HomePage() {
 
                 <p className="text-2xl">
                   {totalBorrowQuantityRemaining.toLocaleString()}{" "}
-                  {tokenMetadata?.name}
+                  {tokenMetadata?.symbol}
                 </p>
 
                 <p className="text-xl text-zinc-400">

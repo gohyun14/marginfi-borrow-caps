@@ -127,6 +127,13 @@ export default async function HealthFactor({ pk }: { pk: PublicKey }) {
               <p className="mb-4 text-center text-sm italic">
                 Health factor: {account.healthFactor}%
               </p>
+              <div className="relative h-2 w-full rounded-full bg-zinc-400">
+                <div className="absolute h-2 w-full rounded-full bg-gradient-to-l from-green-600 via-yellow-300 to-red-600" />
+                <div
+                  style={{ width: `${100 - account.healthFactor}%` }}
+                  className="absolute right-0 h-2 rounded-r-full bg-zinc-400"
+                />
+              </div>
 
               <div className="flex flex-col justify-center gap-8 md:flex-row md:gap-4">
                 <div className="w-full">
