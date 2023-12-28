@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+
 
 import { type Account } from "~/lib/types";
 import { usDollarFormatter } from "~/lib/utils/utils";

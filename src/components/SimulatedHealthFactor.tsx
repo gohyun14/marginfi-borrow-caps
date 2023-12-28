@@ -1,17 +1,42 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
-import { OraclePrice } from "@mrgnlabs/marginfi-client-v2";
+import { BigNumber } from "bignumber.js";
 
 import { type Account } from "~/lib/types";
 import { usDollarFormatter } from "~/lib/utils/utils";
+import { useState } from "react";
 
 export default function SimulatedHealthFactor({
   account,
 }: {
   account: Account;
 }) {
+  const [editedAccount, setEditedAccount] = useState<Account>(account);
+
+  const assets = editedAccount.balances.lending.reduce(
+    (acc, balance) =>
+      acc.plus(
+        new BigNumber(balance.assets.usd).multipliedBy(
+          new BigNumber(balance.assets.assetWeightMaint),
+        ),
+      ),
+    new BigNumber(0),
+  );
+  const liabilities = editedAccount.balances.borrowing.reduce(
+    (acc, balance) =>
+      acc.plus(
+        new BigNumber(balance.liabilities.usd).multipliedBy(
+          new BigNumber(balance.liabilities.liabilityWeightMaint),
+        ),
+      ),
+    new BigNumber(0),
+  );
+  const healthFactor = assets.isZero()
+    ? 1
+    : assets.minus(liabilities).dividedBy(assets).toNumber();
+  console.log(healthFactor);
+
   return (
     <>
       <div>

@@ -91,7 +91,7 @@ export default async function HomePage() {
               .decimalPlaces(2)
               .toNumber();
 
-            const borrowAPY = bank
+            const borrowAPR = bank
               .computeInterestRates()
               .borrowingRate.multipliedBy(100)
               .decimalPlaces(2)
@@ -104,7 +104,7 @@ export default async function HomePage() {
               >
                 <div className="mb-2 flex w-full flex-row items-center justify-between">
                   <p className="text-left text-sm font-[300] text-zinc-300">
-                    {borrowAPY}% apr
+                    {borrowAPR}% apr
                   </p>
 
                   <p className="text-right text-sm font-[300] text-zinc-300">

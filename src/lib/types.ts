@@ -24,10 +24,12 @@ export type Account = {
       assets: {
         quantity: number;
         usd: number;
+        assetWeightMaint: number;
       };
       liabilities: {
         quantity: number;
         usd: number;
+        liabilityWeightMaint: number;
       };
     }[];
     borrowing: {
@@ -39,10 +41,12 @@ export type Account = {
       assets: {
         quantity: number;
         usd: number;
+        assetWeightMaint: number;
       };
       liabilities: {
         quantity: number;
         usd: number;
+        liabilityWeightMaint: number;
       };
     }[];
   };
