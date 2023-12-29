@@ -50,7 +50,7 @@ export default function SimulatedHealthFactor({
   return (
     <>
       <div>
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row flex-wrap gap-3">
           {Array.from(tokenPrices.keys()).map((token) => (
             <div key={token}>
               <label htmlFor={token}>{token}</label>
@@ -84,7 +84,7 @@ export default function SimulatedHealthFactor({
             <div className="mb-3 flex w-full flex-col items-center">
               <h4 className="mb-2 font-medium md:text-lg">Lending</h4>
               {/* container */}
-              <div className="flex flex-row flex-wrap gap-3">
+              <div className="flex flex-row flex-wrap items-center justify-center gap-3">
                 {account.balances.lending.length === 0 && (
                   <p className="text-destructive-foreground">
                     No open lending positions
@@ -126,10 +126,6 @@ export default function SimulatedHealthFactor({
                             )}
                       </li>
                     </ul>
-                    <p>
-                      {balance.price} -{" "}
-                      {balance.assets.usd / balance.assets.quantity}
-                    </p>
                   </div>
                 ))}
               </div>
@@ -137,7 +133,7 @@ export default function SimulatedHealthFactor({
             <div className="mb-3 flex w-full flex-col items-center">
               <h4 className="mb-2 text-lg font-medium">Borrowing</h4>
               {/* container */}
-              <div className="flex flex-row flex-wrap gap-3">
+              <div className="flex flex-row flex-wrap items-center justify-center gap-3">
                 {account.balances.borrowing.length === 0 && (
                   <p className="text-destructive-foreground">
                     No open borrowing positions
@@ -179,10 +175,6 @@ export default function SimulatedHealthFactor({
                             )}
                       </li>
                     </ul>
-                    <p>
-                      {balance.price} -{" "}
-                      {balance.liabilities.usd / balance.liabilities.quantity}
-                    </p>
                   </div>
                 ))}
               </div>
