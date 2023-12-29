@@ -1,6 +1,5 @@
 import Image from "next/image";
 
-
 import { type Account } from "~/lib/types";
 import { usDollarFormatter } from "~/lib/utils/utils";
 
@@ -8,7 +7,7 @@ export default function HealthFactor({ account }: { account: Account }) {
   return (
     <>
       <div>
-        <div className="border-border mb-4 mt-8 pb-4">
+        <div className="mb-4 mt-8 pb-4">
           <p className="mb-4 text-center text-sm italic">
             Health factor: {account.healthFactor}%
           </p>
