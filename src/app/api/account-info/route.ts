@@ -88,13 +88,16 @@ export async function GET(request: Request) {
         name: tokenMetadata?.name,
         symbol: tokenMetadata?.symbol,
         logo: tokenMetadata?.logoURI,
+        price: priceInfo!.price.toNumber(),
         assets: {
           quantity: !assetsUsd.isZero() ? assets.toNumber() : 0,
           usd: assetsUsd.toNumber(),
+          assetWeightMaint: bank.config.assetWeightMaint.toNumber(),
         },
         liabilities: {
           quantity: !liabilitiesUsd.isZero() ? liabilities.toNumber() : 0,
           usd: liabilitiesUsd.toNumber(),
+          liabilityWeightMaint: bank.config.liabilityWeightMaint.toNumber(),
         },
       };
     });

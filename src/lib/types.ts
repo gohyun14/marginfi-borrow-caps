@@ -21,6 +21,7 @@ export type Account = {
       name: string | undefined;
       symbol: string | undefined;
       logo: string | undefined;
+      price: number;
       assets: {
         quantity: number;
         usd: number;
@@ -38,6 +39,7 @@ export type Account = {
       name: string | undefined;
       symbol: string | undefined;
       logo: string | undefined;
+      price: number;
       assets: {
         quantity: number;
         usd: number;
