@@ -10,7 +10,7 @@ export default async function AccountInfo({ pk }: { pk: PublicKey }) {
   }
 
   return (
-    <div className="container px-4 py-8">
+    <div className="container p-4">
       {!!accounts.length ? (
         <Accounts accounts={accounts} />
       ) : (

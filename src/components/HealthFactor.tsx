@@ -7,11 +7,11 @@ export default function HealthFactor({ account }: { account: Account }) {
   return (
     <>
       <div>
-        <div className="mb-4 mt-8 pb-4">
+        <div className="mb-4 mt-8 flex flex-col items-center pb-4">
           <p className="mb-4 text-center text-sm italic">
             Health factor: {account.healthFactor}%
           </p>
-          <div className="relative h-2 w-full rounded-full bg-zinc-400">
+          <div className="relative h-2 w-full max-w-xl rounded-full bg-zinc-400">
             <div className="absolute h-2 w-full rounded-full bg-gradient-to-l from-green-600 via-yellow-300 to-red-600" />
             <div
               style={{ width: `${100 - account.healthFactor}%` }}

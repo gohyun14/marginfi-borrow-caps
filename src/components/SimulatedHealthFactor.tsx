@@ -45,7 +45,23 @@ export default function SimulatedHealthFactor({
 
   const healthFactor =
     assets === 0 ? 1 : Math.max(((assets - liabilities) / assets) * 100, 0);
-  // console.log(healthFactor, account.healthFactor);
+
+  const handleReset = () => {
+    setTokenPrices(
+      new Map(
+        [
+          ...account.balances.lending.map((balance) => [
+            balance.symbol!,
+            balance.assets.usd / balance.assets.quantity,
+          ]),
+          ...account.balances.borrowing.map((balance) => [
+            balance.symbol!,
+            balance.liabilities.usd / balance.liabilities.quantity,
+          ]),
+        ].map((x) => [x[0] as string, x[1] as number]),
+      ),
+    );
+  };
 
   return (
     <>
@@ -56,7 +72,8 @@ export default function SimulatedHealthFactor({
               <label htmlFor={token}>{token}</label>
               <input
                 name={token}
-                value={tokenPrices.get(token)}
+                type="number"
+                value={tokenPrices.get(token)?.toString()}
                 onChange={(e) =>
                   setTokenPrices(
                     new Map(tokenPrices.set(token, Number(e.target.value))),
@@ -66,13 +83,16 @@ export default function SimulatedHealthFactor({
               />
             </div>
           ))}
+          <button aria-label="Reset" onClick={handleReset}>
+            Reset
+          </button>
         </div>
         <div>Simulated Account Info</div>
-        <div className="mb-4 mt-8 pb-4">
+        <div className="mb-4 mt-8 flex flex-col items-center pb-4">
           <p className="mb-4 text-center text-sm italic">
             Health factor: {healthFactor.toFixed(2)}%
           </p>
-          <div className="relative h-2 w-full overflow-hidden rounded-full bg-zinc-400">
+          <div className="relative h-2 w-full max-w-xl overflow-hidden rounded-full bg-zinc-400">
             <div className="absolute h-2 w-full rounded-full bg-gradient-to-l from-green-600 via-yellow-300 to-red-600" />
             <div
               style={{ width: `${100 - healthFactor}%` }}
