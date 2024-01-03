@@ -1,5 +1,3 @@
-import { type BigNumber } from "bignumber.js";
-
 export type TokenMetadata = {
   symbol: string;
   address: string;

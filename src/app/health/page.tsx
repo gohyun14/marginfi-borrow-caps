@@ -33,7 +33,7 @@ export default async function HealthPage({
           type="text"
           name="address"
           placeholder="Address or .sol"
-          className="w-full max-w-lg rounded-md p-2 text-[18px] text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-500"
+          className="w-full max-w-lg rounded-md bg-zinc-100 p-2 text-[18px] text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-500"
         />
         <SearchButton />
         {/* <p>kylesamani.sol</p> */}
