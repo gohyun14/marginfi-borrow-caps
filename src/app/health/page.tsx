@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 
+import SearchButton from "~/components/SearchButton";
+
 export default async function HealthPage({
   searchParams,
 }: {
@@ -23,13 +25,20 @@ export default async function HealthPage({
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center overflow-y-auto overflow-x-hidden bg-zinc-900 text-zinc-100">
-      <form action={handleSearch}>
-        <input type="text" name="address" className="text-black" />
-        <button>Search</button>
-        <p>kylesamani.sol</p>
+      <form
+        action={handleSearch}
+        className="flex w-full flex-col items-center justify-center gap-3 p-3"
+      >
+        <input
+          type="text"
+          name="address"
+          placeholder="Address or .sol"
+          className="w-full max-w-lg rounded-md p-2 text-[18px] text-zinc-900 focus:outline-none focus:ring-2 focus:ring-zinc-500"
+        />
+        <SearchButton />
+        {/* <p>kylesamani.sol</p> */}
+        {error && <div>No address provided</div>}
       </form>
-
-      {error && <div>No address provided</div>}
     </main>
   );
 }
