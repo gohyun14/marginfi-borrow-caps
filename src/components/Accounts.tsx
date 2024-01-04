@@ -19,7 +19,6 @@ import SimulatedHealthFactor from "./SimulatedHealthFactor";
 
 export default function Accounts({ accounts }: { accounts: Account[] }) {
   const [selectedAccount, setSelectedAccount] = useState(accounts[0]?.address);
-  console.log(selectedAccount);
 
   const account = accounts.find(
     (account) => account.address === selectedAccount,
