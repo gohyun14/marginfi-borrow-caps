@@ -145,18 +145,15 @@ export default function SimulatedHealthFactor({
                     </li>
                     <li>
                       {balance.assets.quantity *
-                        (tokenPrices.get(balance.symbol!) ??
-                          balance.assets.usd) <
+                        +tokenPrices.get(balance.symbol!)! <
                       0.01
                         ? `$${
                             balance.assets.quantity *
-                            (tokenPrices.get(balance.symbol!) ??
-                              balance.assets.usd)
+                            +tokenPrices.get(balance.symbol!)!
                           }`
                         : usDollarFormatter.format(
                             balance.assets.quantity *
-                              (tokenPrices.get(balance.symbol!) ??
-                                balance.assets.usd),
+                              +tokenPrices.get(balance.symbol!)!,
                           )}
                     </li>
                   </ul>
@@ -194,18 +191,15 @@ export default function SimulatedHealthFactor({
                     </li>
                     <li>
                       {balance.liabilities.quantity *
-                        (tokenPrices.get(balance.symbol!) ??
-                          balance.liabilities.usd) <
+                        +tokenPrices.get(balance.symbol!)! <
                       0.01
                         ? `$${
                             balance.liabilities.quantity *
-                            (tokenPrices.get(balance.symbol!) ??
-                              balance.liabilities.usd)
+                            +tokenPrices.get(balance.symbol!)!
                           }`
                         : usDollarFormatter.format(
                             balance.liabilities.quantity *
-                              (tokenPrices.get(balance.symbol!) ??
-                                balance.liabilities.usd),
+                              +tokenPrices.get(balance.symbol!)!,
                           )}
                     </li>
                   </ul>
