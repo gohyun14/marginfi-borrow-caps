@@ -27,7 +27,7 @@ export default function Accounts({ accounts }: { accounts: Account[] }) {
 
   return (
     <>
-      <div className="mb-8 text-center font-medium md:text-lg">
+      <div className="mb-6 text-center font-medium md:text-lg">
         <Select
           selectedKey={selectedAccount}
           onSelectionChange={(selected) =>
@@ -38,7 +38,7 @@ export default function Accounts({ accounts }: { accounts: Account[] }) {
           <Label className="cursor-default font-medium text-white md:text-lg">
             Account ({accounts.length})
           </Label>
-          <Button className="pressed:bg-white flex w-full max-w-md cursor-default items-center rounded-lg border-0 bg-zinc-100 px-2 py-2 text-left text-base leading-normal text-gray-700 shadow-md ring-white ring-offset-2 ring-offset-rose-700 transition focus:outline-none focus-visible:ring-2">
+          <Button className="pressed:bg-white flex w-full max-w-md cursor-default items-center rounded-lg border-0 bg-zinc-100 px-2 py-2 text-left text-base leading-normal text-gray-700 shadow-md transition focus:outline-none focus:ring-2 focus:ring-rose-600 focus-visible:ring-2">
             <SelectValue className="flex-1 truncate placeholder-shown:italic" />
             <ChevronUpDownIcon className="h-4 w-4 stroke-2" />
           </Button>
@@ -70,7 +70,7 @@ export default function Accounts({ accounts }: { accounts: Account[] }) {
         </Select>
       </div>
 
-      {account && <HealthFactor account={account} />}
+      {/* {account && <HealthFactor account={account} />} */}
 
       {account && <SimulatedHealthFactor account={account} />}
     </>

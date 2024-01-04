@@ -44,7 +44,9 @@ export default async function AddressPage({
         </>
       ) : (
         <>
-          <p className="mt-5">{address}</p>
+          <p className="mt-5 w-full truncate px-2 text-center text-sm italic md:text-base">
+            {address}
+          </p>
           {pk && <AccountInfo pk={pk} />}
         </>
       )}
