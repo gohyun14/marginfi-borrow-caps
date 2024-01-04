@@ -66,6 +66,7 @@ export default function SimulatedHealthFactor({
   return (
     <div>
       <div className="flex flex-col items-center gap-2">
+        <h4 className="font-medium md:text-lg">Asset Values ($)</h4>
         <ul className="flex flex-row flex-wrap items-center justify-center gap-3">
           {Array.from(tokenPrices.keys()).map((token) => (
             <li key={token} className="flex flex-col">
@@ -95,11 +96,11 @@ export default function SimulatedHealthFactor({
         </button>
       </div>
 
-      <div className="mb-4 mt-5 flex flex-col gap-2 pb-4">
+      <div className="mb-4 mt-5 flex flex-col gap-3 pb-4">
         <div className="flex w-full flex-col items-center">
-          <p className="mb-1 text-center text-sm italic">
+          <h4 className="mb-1 font-medium md:text-lg">
             Health factor: {healthFactor.toFixed(2)}%
-          </p>
+          </h4>
           <div className="relative h-2 w-full max-w-xl overflow-hidden rounded-full bg-zinc-400">
             <div className="absolute h-2 w-full rounded-full bg-gradient-to-l from-green-600 via-yellow-300 to-red-600" />
             <div
