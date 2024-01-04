@@ -79,7 +79,12 @@ export default function SimulatedHealthFactor({
                 value={tokenPrices.get(token)?.toString()}
                 onChange={(e) =>
                   setTokenPrices(
-                    new Map(tokenPrices.set(token, Number(e.target.value))),
+                    new Map(
+                      tokenPrices.set(
+                        token,
+                        !e.target.value ? 0 : parseFloat(e.target.value),
+                      ),
+                    ),
                   )
                 }
                 className="rounded-md border bg-zinc-100 px-2 py-1 text-black transition focus:outline-none focus:ring-2 focus:ring-rose-600"
