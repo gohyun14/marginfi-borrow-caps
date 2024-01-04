@@ -92,11 +92,11 @@ export default function SimulatedHealthFactor({
           ))}
         </ul>
         <button
-          aria-label="Reset"
+          aria-label="Reset Prices"
           onClick={handleReset}
           className="rounded-md bg-zinc-500 px-2 py-1 text-base transition hover:bg-zinc-600 focus:outline-none focus:ring-2 focus:ring-rose-600 active:bg-zinc-500"
         >
-          Reset
+          Reset Prices
         </button>
       </div>
 

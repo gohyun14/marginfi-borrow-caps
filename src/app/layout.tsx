@@ -23,11 +23,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${inter.variable}`}>
         <nav className="flex w-full flex-row items-center justify-center divide-x bg-zinc-900 px-3 py-2 text-zinc-200">
-          <Link href="/" className="text-sm px-2">
+          <Link href="/" className="px-2 text-sm">
             Borrow Caps
           </Link>
 
-          <Link href="/health" className="text-sm px-2">
+          <Link href="/health" className="px-2 text-sm">
             Health Check
           </Link>
         </nav>
