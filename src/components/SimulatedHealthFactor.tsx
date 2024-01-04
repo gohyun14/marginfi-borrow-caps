@@ -22,7 +22,7 @@ export default function SimulatedHealthFactor({
           balance.symbol!,
           balance.liabilities.usd / balance.liabilities.quantity,
         ]),
-      ].map((x) => [x[0] as string, x[1] as number]),
+      ].map((x) => [x[0] as string, x[1]?.toString()]),
     ),
   );
 
@@ -30,7 +30,7 @@ export default function SimulatedHealthFactor({
     (acc, balance) =>
       acc +
       balance.assets.quantity *
-        (tokenPrices.get(balance.symbol!) ?? balance.assets.usd) *
+        +tokenPrices.get(balance.symbol!)! *
         balance.assets.assetWeightMaint,
     0,
   );
@@ -38,7 +38,7 @@ export default function SimulatedHealthFactor({
     (acc, balance) =>
       acc +
       balance.liabilities.quantity *
-        (tokenPrices.get(balance.symbol!) ?? balance.liabilities.usd) *
+        +tokenPrices.get(balance.symbol!)! *
         balance.liabilities.liabilityWeightMaint,
     0,
   );
@@ -58,7 +58,7 @@ export default function SimulatedHealthFactor({
             balance.symbol!,
             balance.liabilities.usd / balance.liabilities.quantity,
           ]),
-        ].map((x) => [x[0] as string, x[1] as number]),
+        ].map((x) => [x[0] as string, x[1]?.toString()]),
       ),
     );
   };
@@ -75,18 +75,17 @@ export default function SimulatedHealthFactor({
               </label>
               <input
                 name={token}
-                type="number"
+                type="text"
                 value={tokenPrices.get(token)?.toString()}
-                onChange={(e) =>
-                  setTokenPrices(
-                    new Map(
-                      tokenPrices.set(
-                        token,
-                        !e.target.value ? 0 : parseFloat(e.target.value),
-                      ),
-                    ),
-                  )
-                }
+                onChange={(e) => {
+                  const val = e.target.value;
+
+                  if (val === "" || /^-?(\d+\.?\d*|\.\d+)$/.test(val)) {
+                    setTokenPrices(new Map(tokenPrices.set(token, val)));
+                  }
+                }}
+                pattern="^-?(\d+\.?\d*|\.\d+)$"
+                inputMode="decimal"
                 className="rounded-md border bg-zinc-100 px-2 py-1 text-black transition focus:outline-none focus:ring-2 focus:ring-rose-600"
               />
             </li>
