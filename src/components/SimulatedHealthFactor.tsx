@@ -116,7 +116,9 @@ export default function SimulatedHealthFactor({
 
         <div className="flex flex-col justify-center gap-2">
           <div className="flex w-full flex-col items-center">
-            <h4 className="mb-1 font-medium md:text-lg">Lending</h4>
+            <h4 className="mb-1 font-medium md:text-lg">
+              Lending: ${assets.toFixed(2)}
+            </h4>
             {/* container */}
             <div className="flex flex-row flex-wrap items-center justify-center gap-3">
               {account.balances.lending.length === 0 && (
@@ -162,7 +164,9 @@ export default function SimulatedHealthFactor({
             </div>
           </div>
           <div className="flex w-full flex-col items-center">
-            <h4 className="mb-1 text-lg font-medium">Borrowing</h4>
+            <h4 className="mb-1 text-lg font-medium">
+              Borrowing: ${liabilities.toFixed(2)}
+            </h4>
             {/* container */}
             <div className="flex flex-row flex-wrap items-center justify-center gap-3">
               {account.balances.borrowing.length === 0 && (
