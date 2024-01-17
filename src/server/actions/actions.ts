@@ -2,7 +2,6 @@
 
 import { MarginfiClient, getConfig } from "@mrgnlabs/marginfi-client-v2";
 import { Connection, PublicKey } from "@solana/web3.js";
-import { NextResponse } from "next/server";
 import { type Account, type TokenMetadata } from "~/lib/types";
 
 export async function getAccounts(address: string) {
