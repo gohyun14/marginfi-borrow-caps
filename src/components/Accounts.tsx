@@ -14,7 +14,6 @@ import {
 } from "react-aria-components";
 
 import { type Account } from "~/lib/types";
-import HealthFactor from "./HealthFactor";
 import SimulatedHealthFactor from "./SimulatedHealthFactor";
 
 export default function Accounts({ accounts }: { accounts: Account[] }) {
