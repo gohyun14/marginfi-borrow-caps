@@ -1,11 +1,9 @@
 import React from "react";
 
-const TwitterBot: React.FC = async () => {
-  const data = await fetch("https://hi.com", {
-    method: "GET",
-  });
-  console.log("component", data);
+export default function TwitterBot() {
+  // const data = await fetch("", {
+  //   method: "GET",
+  // });
+  // console.log("component", data);
   return <div>TwitterBot</div>;
-};
-
-export default TwitterBot;
+}
