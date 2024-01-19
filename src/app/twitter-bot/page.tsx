@@ -133,13 +133,10 @@ const transation = {
 };
 
 export default async function TwitterBot() {
-  const data = await fetch(
-    `${process.env.API_URL}/twitter-bot?address=2s37akK2eyBbp8DZgCm7RtsaEz8eJP3Nxd4urLHQv7yB`,
-    {
-      method: "POST",
-      body: JSON.stringify(transation),
-    },
-  ).then((res) => res.json() as Promise<{ address: string }>);
+  const data = await fetch(`${process.env.API_URL}/twitter-bot`, {
+    method: "POST",
+    body: JSON.stringify(transation),
+  }).then((res) => res.json() as Promise<{ message: string }>);
   // console.log("component response", data);
-  return <div>{data.address}</div>;
+  return <div>{data.message}</div>;
 }
